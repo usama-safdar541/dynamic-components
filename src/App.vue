@@ -1,28 +1,53 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
-</template>
+  <div class="quotes">
+    <div>
+<button @click="selectedComponent='appquote'">Quote</button>
+<button @click="selectedComponent='appAuthor'">Author</button>
+<button @click="selectedComponent='appNew'">New</button>
+<!-- <p>{{ selectedComponent }}</p> -->
+     
+<component :is="selectedComponent"></component>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+<AppQuotes >
+      <h2>The QUotes</h2>
+      <p>The wonderful quote</p>
+     </AppQuotes>
+     </div>
+  </div>    
+  
+  </template>
+  <script> 
+  import Quote from './components/appQuote.vue';
+  import New from './components/New.vue';
+  import Author from './components/Author.vue';
+  
+  export default{
+    data(){
+return{
+  selectedComponent: 'appquote'
 }
-</script>
+    } , 
+    
+    components:{
+  appQuotes: Quote,
+  appAuthor:Author,
+  appNew:New
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+      }
+  } 
+  
+  
+  </script> 
+
+  <style scoped>
+
+.quotes{
+  display: flex;
+  justify-content: center;
+  border: 2px solid;
+  width: 80%;
+  border-radius: 20px;
+  margin: auto;
 }
+
 </style>
